@@ -5,6 +5,8 @@ Mucilage return an object containing methods matching the data keys which can th
 
 Due to the nature of the template engine the template is re-compiled everytime the data object changes.
 
+Mucilage also come in a "light build" which is based on a strip down version of the template engine so it allows only interpolation and doesn't have any configurable settings.
+
 ## API
 
 ### mucilage( string template, object data, HTMLElement target );
@@ -12,6 +14,8 @@ Due to the nature of the template engine the template is re-compiled everytime t
 Bind template and data together, fill the targetted element with the compiled template and return a new mucilage data object.
 
 ### mucilage.templateSettings( object settings );
+
+Not available on the light version of Mucilage.
 
 Change the settings of the template.
 
@@ -27,13 +31,14 @@ Change the settings of the template.
 * control whitespace - strip or preserve
 * streaming friendly
 
-## Basic usage
+## Usage
 
+### Mucilage light (interpolation only)
 
 ```html
 <!DOCTYPE html>
 <html>
-<script src="mucilage.js"></script>
+<script src="mucilage-light.js"></script>
 <body>
 <div id="content"></div>
 <script>
@@ -57,6 +62,52 @@ var template = '<h1>{{=$.title}}</h1><p>{{=$.message}}</p>',
     }, 3000);
 
 
+```
+```html
+</script>
+</body>
+</html>
+```
+
+### Mucilage full featured
+
+```html
+<!DOCTYPE html>
+<html>
+<script src="mucilage.js"></script>
+<body>
+<div id="content"></div>
+<script type="text/mucilage-template" id="templ">
+<h1>Just static text</h1>
+<p>Interpolation {{=$.f1   +	$.f3}} </p>
+<div> JavaScript block evaluation
+{{ for(var i=0; i < $.f2; i++) {
+    console.log("Pass\t" + i);
+    }}
+    <div>{{=$.f3}}</div>
+    {{ } }}
+    </div>
+    <div> Encoding {{!'<a   href="http://github.com"></a>'}}</div>
+</script>
+</body>
+<script>
+```
+```javascript
+// original data and template
+var data = {
+	f1: 10,
+	f2: 10,
+	f3: 10,
+    },
+    template = document.getElementById('templ').text;
+
+// convert data into a mucilage object
+data = mucilage(template, data, document.getElementById('content'));
+
+// update data object and update the template
+setTimeout(function(){
+    data.f1(5);
+}, 3000);
 ```
 ```html
 </script>

@@ -17,7 +17,9 @@ test('Mucilage', function(){
 	muc = mucilage(template, data, div);
 
     equal(div.innerHTML, '<h1>Title</h1><p>Message</p>', 'initial state');
+    
     muc.title('New');
+    
     equal(div.innerHTML, '<h1>New</h1><p>Message</p>', 'updated state');
 
     // return value basic test
