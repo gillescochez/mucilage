@@ -17,7 +17,6 @@ Change the settings of the template.
 
 Default settings
 ```javascript
-{
     evaluate: /\{\{([\s\S]+?)\}\}/g, // {{ ... }}
     interpolate: /\{\{=([\s\S]+?)\}\}/g, // {{= ... }}
     encode: /\{\{!([\s\S]+?)\}\}/g, // {{! ... }}
@@ -26,7 +25,6 @@ Default settings
     varname: '$', // only default settings change from doT (doT uses 'it')
     strip : true,
     append: true
-}
 ```
 
 ## Template engine features
