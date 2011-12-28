@@ -37,3 +37,9 @@ var template = '<h1>{{=$.title}}</h1><p>{{=$.message}}</p>',
 </body>
 </html>
 ```
+
+## Credits
+
+The template engine is powered by [doT.js](http://olado.github.com/doT/) which is written by Laura Doktorova.
+
+
