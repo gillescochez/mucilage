@@ -27,7 +27,7 @@ mucilage.templateEngine = function() {
 	init: function(tmpl, c, def) {
 
 	    c = c ? extend(mucilage.templateEngine.settings, c, true) : mucilage.templateEngine.settings;
-console.log(c);
+
 	    var cstart = c.append ? "'+(" : "';out+=(",
 		cend   = c.append ? ")+'" : ");out+='",
 		str = (c.use || c.define) ? resolveDefs(c, tmpl, def || {}) : tmpl;
