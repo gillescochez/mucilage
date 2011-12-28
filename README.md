@@ -27,7 +27,9 @@ var template = '<h1>{{=$.title}}</h1><p>{{=$.message}}</p>',
 
     // this will update the Message in 3 seconds
     setTimeout(function() {
+	console.log(muc.message());
 	muc.message('New message');
+	console.log(muc.message());
     }, 3000);
 
 
