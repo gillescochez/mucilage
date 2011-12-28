@@ -115,6 +115,16 @@ setTimeout(function(){
 </html>
 ```
 
+### Pass template options in instance call
+
+Mucilage first argument can be an array which is used to pass parameters directly to the template engine
+so that the full power of doT can be used.
+
+```javascript
+// change template settings for the created instance
+mucilage(['{{= it.foo }}', {varname:'it'}], {foo:'foo'}, document.getElementById('content')); 
+```
+
 ## Credits
 
 The template engine is powered by [doT.js](http://olado.github.com/doT/), written by Laura Doktorova, which is a very performant template engine. See the link for more information.
