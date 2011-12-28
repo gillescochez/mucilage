@@ -2,6 +2,7 @@ function mucilage(templ, data, target) {
     return new mucilage.init(templ, data, target);
 }
 
+// template and data object are stored in key 0 and 1 so text base methods = object keys
 mucilage.init = function(templ, data, target) {
 
     // build the template
