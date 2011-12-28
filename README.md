@@ -15,18 +15,6 @@ Bind template and data together and return a new mucilage data object
 
 Change the settings of the template.
 
-Default settings
-```javascript
-    evaluate: /\{\{([\s\S]+?)\}\}/g, // {{ ... }}
-    interpolate: /\{\{=([\s\S]+?)\}\}/g, // {{= ... }}
-    encode: /\{\{!([\s\S]+?)\}\}/g, // {{! ... }}
-    use: /\{\{#([\s\S]+?)\}\}/g, // {{# ... }} compile time evaluation
-    define: /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g, // {{## ... }} compile time defs
-    varname: '$', // only default settings change from doT (doT uses 'it')
-    strip : true,
-    append: true
-```
-
 ## Template engine features
 
 * no dependencies
