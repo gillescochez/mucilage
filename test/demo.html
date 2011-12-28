@@ -1,0 +1,48 @@
+<html>
+<head>
+    <script src="../src/core.js"></script>
+    <script src="../src/template.js"></script>
+    <script src="../src/data.js"></script>
+    <script src="../src/helper.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script type="text/mucilage-template" id="templ">
+<h1>Just static text</h1>
+<p>Interpolation {{=$.f1   +	$.f3}} </p>
+<div> JavaScript block evaluation
+{{ for(var i=0; i < $.f2; i++) {
+    console.log("Pass\t" + i);
+    }}
+    <div>{{=$.f3}}</div>
+    {{ } }}
+    </div>
+    <div> Encoding {{!'<a   href="http://github.com"></a>'}}</div>
+</script>
+</body>
+<script>
+
+// original data and template
+var data = {
+    f1: 10,
+    f2: 10,
+    f3: 10,
+    title: 'Test',
+    posted: '2 minutes ago'
+},
+template = '<h1>{{=$.title}}</h1><p>Posted: {{=$.posted}}</p>';
+
+template = document.getElementById('templ').text;
+
+// convert data into a mucilage object
+data = mucilage(template, data, document.getElementById('content'));
+
+// update data object and update the template
+setTimeout(function(){
+    data.f1(5);
+    data.title('New title');
+    data.posted('3 minutes ago');
+}, 3000);
+
+</script>
+</html>
