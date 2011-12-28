@@ -19,7 +19,7 @@
     	</concat>
 	<concat destfile="../../build/mucilage-light.js">
 	    <filelist dir="./" files="head.js" />
-	    <filelist dir="../../build/" files="core.js,helper.js,data.js,templateLight.js" />
+	    <filelist dir="../../build/" files="coreLight.js,helper.js,data.js,templateLight.js" />
 	    <filelist dir="./" files="foot.js" />
     	</concat>
     </target>

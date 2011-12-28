@@ -1,11 +1,14 @@
 // helper function to extend objects
-function extend(target, options) {
+function extend(target, options, newObj) {
+
+    if (!options) return target;
 
     // function scope variables
-    var name, src, copy;
+    var name, src, copy,
+	obj = {};
 
     // Extend the base object
-    for (name in options) {
+    for (name in target) {
 	
 	// grab original and new value
 	src = target[name];
@@ -14,12 +17,16 @@ function extend(target, options) {
 	// Prevent never-ending loop
 	if (target === copy) continue;
 
+	if (src !== undefined) obj[name] = src;
+
 	// Don't copy undefined values
-	if (copy !== undefined) target[name] = copy;
+	if (copy !== undefined) {
+	    if (!newObj) target[name] = copy;
+	    else obj[name] = copy;
+	}
     }
 
-    // Return the modified object
-    return target;
+    return newObj ? obj : target;
 }
 
 // string type check helper
