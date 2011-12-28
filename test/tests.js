@@ -1,7 +1,7 @@
 test('Setup', function(){
     
     // test count
-    expect(9);
+    expect(10);
 
     // test exposure and presence
     ok(mucilage, 'mucilage');
@@ -15,6 +15,17 @@ test('Setup', function(){
     ok(muc[0], 'template instance created');
     ok(muc[1], 'data object created');
     ok(muc.foo, 'data based method created');
+
+    var oldVal = mucilage.settings.special,
+	newVal = !oldVal;
+
+    mucilage({
+	special: newVal
+    });
+
+    equal(mucilage.settings.special, newVal, 'muciale(obj) -> update settings');
+
+    mucilage.settings.special = oldVal;
 
 });
 
@@ -47,5 +58,42 @@ test('Template', function() {
     data = { arr: ['f','fo','foo'] };
     muc = mucilage(template, data, div);
     equal(div.innerHTML, 'ffofoo', 'evaluation (for loop)');
+
+});
+
+test('$ and _ ON', function() {
+
+    expect(4);
+
+    mucilage.settings.special = true;
+
+    var tpl = '{{= $.foo }}',
+	data = {foo:'foo'},
+	muc = mucilage(tpl, data, document.createElement('div'));
+
+   deepEqual(muc._(), data, 'retrieve data object');
+
+   muc._({foo:'FOO'});
+   deepEqual(muc._(), {foo:'FOO'}, 'update data object using an object');
+
+   equal(muc.$(), 'FOO', 'retrieve a freshly compiled template');
+
+   muc.$('P{{= $.foo }}');
+   equal(muc.$(), 'PFOO', 'updated template');
+
+});
+
+test('$ and _ OFF', function() {
+
+     mucilage.settings.special = false;
+
+    expect(2);
+
+    var tpl = '{{= $.foo }}',
+	data = {foo:'foo'},
+	muc = mucilage(tpl, data, document.createElement('div'), false);
+
+   equal(!!muc._, false, '_ not found');
+   equal(!!muc.$, false, '$ not found');
 
 });
