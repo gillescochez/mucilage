@@ -3,8 +3,6 @@
 Mucilage is a simple data to template binding engine which allows to bind the updating of the template with the data.
 Mucilage return an object containing methods matching the data keys which can then be used to update the data object later.
 
-It currently only supports basic variable assignements (no array or object support yet)
-
 ## Basic usage
 
 

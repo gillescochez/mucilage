@@ -2,11 +2,12 @@
 test('Mucilage', function(){
     
     // test count
-    expect(3);
+    expect(4);
 
-    // some basic core tests
+    // test exposure
     ok(mucilage, 'mucilage');
 
+    // basic usage tests
     var template = '<h1>{{=$.title}}</h1><p>{{=$.message}}</p>',
 	data = {
 	    title: 'Title',
@@ -16,10 +17,10 @@ test('Mucilage', function(){
 	muc = mucilage(template, data, div);
 
     equal(div.innerHTML, '<h1>Title</h1><p>Message</p>', 'initial state');
-
     muc.title('New');
+    equal(div.innerHTML, '<h1>New</h1><p>Message</p>', 'updated state');
 
-    equal(div.innerHTML, '<h1>New</h1><p>Message</p>', 'update state');
-
+    // return value basic test
+    equal(muc.title(), 'New', 'return key value');
 
 });

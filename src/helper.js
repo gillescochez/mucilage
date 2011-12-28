@@ -21,3 +21,24 @@ function extend(target, options) {
     // Return the modified object
     return target;
 }
+
+// string type check helper
+function isString(it) {
+    return typeof it === 'string';
+}
+
+// object type check helper
+function isObject(it) {
+    return typeof it  === 'object';
+}
+
+// boolean type check helper
+function isBoolean(it) {
+    return typeof it === 'boolean';
+}
+
+// array type check helper
+function isArray(it) {
+    if (isObject(it)) return it.constructor == Array;
+    else return false;
+}
