@@ -13,11 +13,15 @@ Mucilage also come in a "light build" which is based on a strip down version of 
 
 Bind template and data together, fill the targetted element with the compiled template and return a new mucilage data object.
 
+### mucilage( array[template, settings, default] , object, HTMLElement );
+
+Same as above but uses the array to pass arguments to the template engine.
+
 ### mucilage.templateSettings( object settings );
 
-Not available on the light version of Mucilage.
+Change the default settings of the template engine. All instance of mucilage after that will use those settings.
 
-Change the settings of the template.
+NOTE: Not available on the light version of Mucilage.
 
 ## Template engine features
 
@@ -118,7 +122,7 @@ setTimeout(function(){
 ### Pass template options in instance call
 
 Mucilage first argument can be an array which is used to pass parameters directly to the template engine
-so that the full power of doT can be used.
+so that the full power of doT can be released.
 
 ```javascript
 // change template settings for the created instance
