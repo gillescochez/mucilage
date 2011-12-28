@@ -3,6 +3,8 @@
 Mucilage is a simple data to template binding engine which allows to bind the updating of the template with the data.
 Mucilage return an object containing methods matching the data keys which can then be used to update the data object later.
 
+It currently only supports basic variable assignements (no array or object support yet)
+
 ## Basic usage
 
 
@@ -40,6 +42,4 @@ var template = '<h1>{{=$.title}}</h1><p>{{=$.message}}</p>',
 
 ## Credits
 
-The template engine is powered by [doT.js](http://olado.github.com/doT/) which is written by Laura Doktorova.
-
-
+The template engine is powered by [doT.js](http://olado.github.com/doT/), written by Laura Doktorova, which is a very performant template engine. See the link for more information.
