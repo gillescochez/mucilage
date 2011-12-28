@@ -1,7 +1,21 @@
 ## Mucilage
 
 Mucilage is a simple data to template binding engine which allows to bind the updating of the template with the data.
-Mucilage return an object containing methods matching the data keys which can then be used to update the data object later.
+Mucilage return an object containing methods matching the data keys which can then be used to update the data object or retrieve current values.
+
+Due to the nature of the template engine (allows javascript evaluation) the template is rebuild everytime the data object changes.
+
+## Template features
+
+* no dependencies
+* custom delimiters
+* runtime evaluation
+* runtime interpolation
+* compile-time evaluation
+* partials support
+* encoding
+* control whitespace - strip or preserve
+* streaming friendly
 
 ## Basic usage
 
