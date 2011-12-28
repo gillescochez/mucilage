@@ -9,7 +9,7 @@ Due to the nature of the template engine the template is re-compiled everytime t
 
 ### mucilage( string template, object data, HTMLElement target );
 
-Bind template and data together and return a new mucilage data object
+Bind template and data together, fill the targetted element with the compiled template and return a new mucilage data object.
 
 ### mucilage.templateSettings( object settings );
 
