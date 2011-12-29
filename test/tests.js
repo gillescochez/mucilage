@@ -68,7 +68,7 @@ test('Template', function() {
 
 test('$ and _ ON', function() {
 
-    expect(4);
+    expect(5);
 
     mucilage.settings.special = true;
 
@@ -76,15 +76,20 @@ test('$ and _ ON', function() {
 	data = {foo:'foo'},
 	muc = mucilage(tpl, data, document.createElement('div'));
 
-   deepEqual(muc._(), data, 'retrieve data object');
+    deepEqual(muc._(), data, 'retrieve data object');
 
-   muc._({foo:'FOO'});
-   deepEqual(muc._(), {foo:'FOO'}, 'update data object using an object');
+    // data replace test
+    muc._({foo:'FOO'});
+    deepEqual(muc._(), {foo:'FOO'}, 'replace data object');
 
-   equal(muc.$(), 'FOO', 'retrieve a freshly compiled template');
+    // data extend test
+    muc._({boo:'boo'}, true);
+    deepEqual(muc._(), {foo:'FOO',boo:'boo'}, 'extend data object');
 
-   muc.$('P{{= $.foo }}');
-   equal(muc.$(), 'PFOO', 'updated template');
+    equal(muc.$(), 'FOO', 'retrieve a freshly compiled template');
+
+    muc.$('P{{= $.foo }}');
+    equal(muc.$(), 'PFOO', 'updated template');
 
 });
 

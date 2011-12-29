@@ -30,10 +30,16 @@ mucilage.init = function(templ, data, target) {
     if (mucilage.settings.special) {
 	
 	// function to update multiple keys or retrieve current data object
-	this._ = function(obj) {
+	this._ = function(obj, ext) {
 	    if (obj) {
-		extend(this[1], obj);
+
+		// extend or replace the data object
+		if (ext) extend(this[1], obj);
+		else this[1] = obj;
+
+		// update target if any
 		if (target) target.innerHTML = this[0](this[1]);
+
 	    } else return this[1];
 	}
 
