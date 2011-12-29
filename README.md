@@ -153,7 +153,7 @@ so that the full power of doT can be released.
 mucilage(['{{= it.foo }}', {varname:'it'}], {foo:'foo'}, document.getElementById('content')); 
 ```
 
-### Use special instancew methods
+### Use special instance methods
 
 ```javascript
 
