@@ -5,7 +5,7 @@ function mucilage(templ, data, target) {
 
 // engine settings
 mucilage.settings = {
-    special: false
+    special: true
 }
 
 // template and data object are stored in key 0 and 1 so text base methods = object keys
