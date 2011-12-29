@@ -24,7 +24,7 @@ mucilage.init = function(templ, data, target) {
     mucilage.bind(this, data, target);
 
     // update the target with the initial compiled template
-    target.innerHTML = this[0](this[1]);
+    if (target) target.innerHTML = this[0](this[1]);
 
     // add $ and _ methods by default but allows disabling
     if (mucilage.settings.special) {
@@ -33,7 +33,7 @@ mucilage.init = function(templ, data, target) {
 	this._ = function(obj) {
 	    if (obj) {
 		extend(this[1], obj);
-		target.innerHTML = this[0](this[1]);
+		if (target) target.innerHTML = this[0](this[1]);
 	    } else return this[1];
 	}
 

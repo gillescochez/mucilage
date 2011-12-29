@@ -25,7 +25,7 @@ mucilage.bind = function(instance, data, target) {
 		instance[1][name] = val;
 
 		// update the template
-		target.innerHTML = instance[0](instance[1]);
+		if (target) target.innerHTML = instance[0](instance[1]);
 	    }
 
 	})(name);

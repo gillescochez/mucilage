@@ -1,7 +1,7 @@
 test('Setup', function(){
     
     // test count
-    expect(10);
+    expect(12);
 
     // test exposure and presence
     ok(mucilage, 'mucilage');
@@ -26,6 +26,11 @@ test('Setup', function(){
     equal(mucilage.settings.special, newVal, 'muciale(obj) -> update settings');
 
     mucilage.settings.special = oldVal;
+
+    // making sure target is optional
+    muc = mucilage('{{= $.foo }}', {foo:'foo'});
+    deepEqual(muc[1], {foo:'foo'}, 'No target: data correctly set');
+    equal(muc[0](muc[1]), 'foo', 'No target: templating works');
 
 });
 

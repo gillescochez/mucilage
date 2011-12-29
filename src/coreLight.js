@@ -12,7 +12,7 @@ mucilage.init = function(templ, data, target) {
     mucilage.bind(this, data, target);
 
     // update target
-    target.innerHTML = this[0](this[1]);
+    if (target) target.innerHTML = this[0](this[1]);
 
     // return instance
     return this;
