@@ -7,7 +7,7 @@ Due to the nature of the template engine the template is re-compiled everytime t
 
 Mucilage also come in a "light build" which is based on a strip down version of the template engine so it allows only interpolation and doesn't have any configurable settings.
 
-## API
+## Core API
 
 ### mucilage( string template, object data, HTMLElement target );
 
@@ -22,6 +22,30 @@ Same as above but uses the array to pass arguments to the template engine.
 Change the default settings of the template engine. All instance of mucilage after that will use those settings.
 
 NOTE: Not available on the light version of Mucilage.
+
+### mucilage( object settings )
+
+Change mucilage default settings in one call
+
+## Instance Special API
+
+Available on the full version when the setting "special" is set to to true.
+
+### instance._()
+
+return the current data object
+
+### instance._(object)
+
+update the current data object and then recompiled the template
+
+### instance.$()
+
+return a freshly compiled template
+
+### instance.$(string)
+
+update the current instance template
 
 ## Template engine features
 
@@ -129,6 +153,28 @@ so that the full power of doT can be released.
 mucilage(['{{= it.foo }}', {varname:'it'}], {foo:'foo'}, document.getElementById('content')); 
 ```
 
+### Use special instancew methods
+
+```javascript
+
+mucilage({
+    special: true
+});
+
+var div = document.createElement('div'),
+    muc = mucilage('', {}, div);
+
+muc._({
+    foo: 'foo'
+});
+
+muc.$('{{= $.foo }}');
+
+var compiled = muc.$();
+
+```
+
 ## Credits
 
 The template engine is powered by [doT.js](http://olado.github.com/doT/), written by Laura Doktorova, which is a very performant template engine. See the link for more information.
+
