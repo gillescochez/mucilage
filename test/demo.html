@@ -7,6 +7,8 @@
 </head>
 <body>
 <div id="content"></div>
+<div class="test"></div>
+<div class="test"></div>
 <script type="text/mucilage-template" id="templ">
 <h1>Just static text</h1>
 <p>Interpolation {{=$.f1   +	$.f3}} </p>
@@ -35,7 +37,7 @@ template = '<h1>{{=$.title}}</h1><p>Posted: {{=$.posted}}</p>';
 template = document.getElementById('templ').text;
 
 // convert data into a mucilage object
-data = mucilage(template, data, document.getElementById('content'));
+data = mucilage(template, data, document.getElementsByClassName('test'));
 
 // update data object and update the template
 setTimeout(function(){

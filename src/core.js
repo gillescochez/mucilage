@@ -24,7 +24,7 @@ mucilage.init = function(templ, data, target) {
     mucilage.bind(this, data, target);
 
     // update the target with the initial compiled template
-    if (target) target.innerHTML = this[0](this[1]);
+    if (target) mucilage.update(this, target);
 
     // add $ and _ methods by default but allows disabling
     if (mucilage.settings.special) {
@@ -38,12 +38,12 @@ mucilage.init = function(templ, data, target) {
 		else this[1] = obj;
 
 		// update target if any
-		if (target) target.innerHTML = this[0](this[1]);
+		if (target) mucilage.update(this, target);
 
 	    } else return this[1];
 	}
 
-	// function to retrieve a freshly compiled template or set a new template
+	// function to retrieve aIfreshly compiled template or set a new template
 	this.$ = function(templ) {
 	    if (!templ) return this[0](this[1]);
 	    else mucilage._template(this, templ);
@@ -52,6 +52,16 @@ mucilage.init = function(templ, data, target) {
 
     // return instance
     return this;
+}
+
+mucilage.update = function(instance, target) {
+    
+    var len = target.length,
+	i = 0;
+
+    if (len) {
+	for (; i < len; i++) target[i].innerHTML = instance[0](instance[1]);
+    } else target.innerHTML = instance[0](instance[1]);
 }
 
 mucilage._template = function(instance, templ) {
