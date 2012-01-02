@@ -29,7 +29,7 @@ Change mucilage default settings in one call
 
 ## Instance Special API
 
-Available on the full version when the setting "special" is set to to true.
+Available on the full version when the setting "special" is set to to true, which it is by default.
 
 ### instance._()
 
@@ -157,10 +157,6 @@ mucilage(['{{= it.foo }}', {varname:'it'}], {foo:'foo'}, document.getElementById
 
 ```javascript
 
-mucilage({
-    special: true
-});
-
 var div = document.createElement('div'),
     muc = mucilage('', {}, div);
 
@@ -171,6 +167,16 @@ muc._({
 muc.$('{{= $.foo }}');
 
 var compiled = muc.$();
+
+```
+
+### disable special methods globally
+
+```javascript
+
+mucilage({
+    special:false
+});
 
 ```
 
