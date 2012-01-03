@@ -55,7 +55,6 @@ mucilage.templateEngine = function() {
 		try {
 		    return new Function(c.varname, str);
 		} catch (e) {
-		    mucilage.log("Could not create a template function: " + str);
 		    throw e;
 		}
 	    }
