@@ -1,9 +1,9 @@
 ## Mucilage
 
-Mucilage is a lightweight (full ~4KB, light ~1.2KB) data to template binding engine which allows to bind the updating of the template with the data.
+Mucilage is a lightweight (full ~2.9KB, light ~0.8KB) data to template binding engine which allows to bind the updating of the template with the data.
 Mucilage return an object containing methods matching the data keys which can then be used to update the data object or retrieve current values.
 
-Due to the nature of the template engine the template is re-compiled everytime the data object changes.
+Due to the nature of the template engine the template is re-compiled every time the data object changes.
 
 Mucilage also come in a "light build" which is based on a strip down version of the template engine so it allows only interpolation and doesn't have any configurable settings.
 
@@ -11,7 +11,7 @@ Mucilage also come in a "light build" which is based on a strip down version of 
 
 ### mucilage( string template, object data, HTMLElement target );
 
-Bind template and data together, fill the targetted element with the compiled template and return a new mucilage data object.
+Bind template and data together, fill the targeted element with the compiled template and return a new mucilage data object.
 
 ### mucilage( array[template, settings, default] , object, HTMLElement );
 
@@ -182,5 +182,5 @@ mucilage({
 
 ## Credits
 
-The template engine is powered by [doT.js](http://olado.github.com/doT/), written by Laura Doktorova, which is a very performant template engine. See the link for more information.
+The template engine is powered by [doT.js](http://olado.github.com/doT/), written by Laura Doktorova, which is a high performance template engine. See the link for more information.
 
