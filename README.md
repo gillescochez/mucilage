@@ -170,7 +170,7 @@ var compiled = muc.$();
 
 ```
 
-### disable special methods globally
+### Disable special methods globally
 
 ```javascript
 
