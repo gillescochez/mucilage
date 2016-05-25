@@ -6,15 +6,15 @@ function mucilage(templ, data, target) {
 // engine settings
 mucilage.settings = {
     special: true
-}
+};
 
 // template and data object are stored in key 0 and 1 so text base methods = object keys
 mucilage.init = function(templ, data, target) {
 
     // allows the initialization methods to be used to set global settings
     if (isObject(templ) && !isArray(templ)) {
-	extend(mucilage.settings, templ);
-	return;
+        extend(mucilage.settings, templ);
+        return;
     }
 
     // create the template object
@@ -29,30 +29,31 @@ mucilage.init = function(templ, data, target) {
     // add $ and _ methods by default but allows disabling
     if (mucilage.settings.special) {
 	
-	// function to update multiple keys or retrieve current data object
-	this._ = function(obj, ext) {
-	    if (obj) {
+        // function to update multiple keys or retrieve current data object
+        this._ = function(obj, ext) {
 
-		// extend or replace the data object
-		if (ext) extend(this[1], obj);
-		else this[1] = obj;
+            if (obj) {
 
-		// update target if any
-		if (target) mucilage.update(this, target);
+                // extend or replace the data object
+                if (ext) extend(this[1], obj);
+                else this[1] = obj;
 
-	    } else return this[1];
-	}
+                // update target if any
+                if (target) mucilage.update(this, target);
 
-	// function to retrieve aIfreshly compiled template or set a new template
-	this.$ = function(templ) {
-	    if (!templ) return this[0](this[1]);
-	    else mucilage._template(this, templ);
-	}
+            } else return this[1];
+        };
+
+        // function to retrieve aIfreshly compiled template or set a new template
+        this.$ = function(templ) {
+            if (!templ) return this[0](this[1]);
+            else mucilage._template(this, templ);
+        }
     }
 
     // return instance
     return this;
-}
+};
 
 mucilage.update = function(instance, target) {
     
@@ -60,12 +61,14 @@ mucilage.update = function(instance, target) {
 	i = 0;
 
     if (len) {
-	for (; i < len; i++) target[i].innerHTML = instance[0](instance[1]);
-    } else target.innerHTML = instance[0](instance[1]);
-}
+	    for (; i < len; i++) target[i].innerHTML = instance[0](instance[1]);
+    } else {
+        target.innerHTML = instance[0](instance[1]);
+    }
+};
 
 mucilage._template = function(instance, templ) {
     // use call if template is an array to allow advanced usage of the template engine
     if (isArray(templ)) instance[0] = mucilage.template.apply(instance, templ);
     else instance[0] = mucilage.template(templ);
-}
+};

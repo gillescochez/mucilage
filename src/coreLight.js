@@ -16,4 +16,4 @@ mucilage.init = function(templ, data, target) {
 
     // return instance
     return this;
-}
+};

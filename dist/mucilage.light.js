@@ -1,8 +1,4 @@
-/*! github.com/gillescochez/mucilage */
-
-/*! mucilage (c) G.Cochez - github.com/gillescochez/mucilage */
 (function(){
-
 
 function mucilage(templ, data, target) {
     return new mucilage.init(templ, data, target);
@@ -22,7 +18,7 @@ mucilage.init = function(templ, data, target) {
 
     // return instance
     return this;
-}
+};
 
 // store data in the instance and create methods based on data object
 mucilage.bind = function(instance, data, target) {
@@ -35,28 +31,28 @@ mucilage.bind = function(instance, data, target) {
     // loop through data object
     for (name in data) {
 	
-	// store the data on the current instance
-	instance[1][name] = data[name] || null;
+        // store the data on the current instance
+        instance[1][name] = data[name] || null;
 
-	// self executing function to take care of name scope
-	(function(name) {
+        // self executing function to take care of name scope
+        (function(name) {
 
-	    // create a new method on the instance to update the given key
-	    instance[name] = function(val) {
+            // create a new method on the instance to update the given key
+            instance[name] = function(val) {
 
-		// if no value is given return the current value
-		if (!val) return instance[1][name];
-		
-		// update data object
-		instance[1][name] = val;
+            // if no value is given return the current value
+            if (!val) return instance[1][name];
 
-		// update the template
-		if (target) target.innerHTML = instance[0](instance[1]);
-	    }
+            // update data object
+            instance[1][name] = val;
 
-	})(name);
+            // update the template
+            if (target) target.innerHTML = instance[0](instance[1]);
+            }
+
+        })(name);
     }
-}
+};
 
 // original code from doT.js - 2011, Laura Doktorova https://github.com/olado/doT
 // simplified version of the template which allows only interpolation
@@ -79,10 +75,10 @@ mucilage.template = function(str) {
 	.split("var out='';out+=").join('var out=');
 	
     try {
-	return new Function('$', str);
+	    return new Function('$', str);
     } catch (e) {
-	throw e;
-    };
+	    throw e;
+    }
 };
 
 // helper function to extend objects
@@ -100,15 +96,15 @@ function extend(target, options, newObj) {
     // extend the base object
     for (name in options) {
 	
-	// grab original and new value
-	src = target[name];
-	copy = options[name];
+        // grab original and new value
+        src = target[name];
+        copy = options[name];
 
-	// Prevent never-ending loop
-	if (target === copy) continue;
+        // Prevent never-ending loop
+        if (target === copy) continue;
 
-	// Don't copy undefined values
-	if (copy !== undefined) (newObj ? obj : target)[name] = copy;
+        // Don't copy undefined values
+        if (copy !== undefined) (newObj ? obj : target)[name] = copy;
     }
 
     return newObj ? obj : target;

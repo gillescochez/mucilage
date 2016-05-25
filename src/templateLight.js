@@ -19,8 +19,8 @@ mucilage.template = function(str) {
 	.split("var out='';out+=").join('var out=');
 	
     try {
-	return new Function('$', str);
+	    return new Function('$', str);
     } catch (e) {
-	throw e;
-    };
+	    throw e;
+    }
 };

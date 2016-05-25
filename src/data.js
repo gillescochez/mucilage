@@ -9,25 +9,25 @@ mucilage.bind = function(instance, data, target) {
     // loop through data object
     for (name in data) {
 	
-	// store the data on the current instance
-	instance[1][name] = data[name] || null;
+        // store the data on the current instance
+        instance[1][name] = data[name] || null;
 
-	// self executing function to take care of name scope
-	(function(name) {
+        // self executing function to take care of name scope
+        (function(name) {
 
-	    // create a new method on the instance to update the given key
-	    instance[name] = function(val) {
+            // create a new method on the instance to update the given key
+            instance[name] = function(val) {
 
-		// if no value is given return the current value
-		if (!val) return instance[1][name];
-		
-		// update data object
-		instance[1][name] = val;
+            // if no value is given return the current value
+            if (!val) return instance[1][name];
 
-		// update the template
-		if (target) target.innerHTML = instance[0](instance[1]);
-	    }
+            // update data object
+            instance[1][name] = val;
 
-	})(name);
+            // update the template
+            if (target) target.innerHTML = instance[0](instance[1]);
+            }
+
+        })(name);
     }
-}
+};

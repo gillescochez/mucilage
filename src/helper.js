@@ -13,15 +13,15 @@ function extend(target, options, newObj) {
     // extend the base object
     for (name in options) {
 	
-	// grab original and new value
-	src = target[name];
-	copy = options[name];
+        // grab original and new value
+        src = target[name];
+        copy = options[name];
 
-	// Prevent never-ending loop
-	if (target === copy) continue;
+        // Prevent never-ending loop
+        if (target === copy) continue;
 
-	// Don't copy undefined values
-	if (copy !== undefined) (newObj ? obj : target)[name] = copy;
+        // Don't copy undefined values
+        if (copy !== undefined) (newObj ? obj : target)[name] = copy;
     }
 
     return newObj ? obj : target;
