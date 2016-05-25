@@ -11,6 +11,7 @@
 <div class="test"></div>
 <script type="text/mucilage-template" id="templ">
 <h1>Just static text</h1>
+<h2>{{=$.foo}}</h2>
 <p>Interpolation {{=$.f1   +	$.f3}} </p>
 <div> JavaScript block evaluation
 {{ for(var i=0; i < $.f2; i++) {
@@ -29,21 +30,17 @@ var data = {
     f1: 10,
     f2: 10,
     f3: 10,
-    title: 'Test',
-    posted: '2 minutes ago'
-},
-template = '<h1>{{=$.title}}</h1><p>Posted: {{=$.posted}}</p>';
-
-template = document.getElementById('templ').text;
+	foo: "Will change"
+    },
+    template = document.getElementById('templ').text;
 
 // convert data into a mucilage object
-data = mucilage(template, data, document.getElementsByClassName('test'));
+data = mucilage(template, data, document.getElementById('content'));
 
 // update data object and update the template
 setTimeout(function(){
     data.f1(5);
-    data.title('New title');
-    data.posted('3 minutes ago');
+	data.foo("Changed!");
 }, 3000);
 
 </script>
